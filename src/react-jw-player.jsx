@@ -84,11 +84,13 @@ class ReactJWPlayer extends Component {
     const player = window.jwplayer(this.videoRef);
     if (!player) {
       // this player ref may have been destroyed already
-      return; 
+      return;
     }
-    
+
     const playerOpts = getPlayerOpts(this.props);
 
+    // eslint-disable-next-line no-console
+    console.log(player);
     initialize({ component, player, playerOpts });
   }
   _setVideoRef(element) {
