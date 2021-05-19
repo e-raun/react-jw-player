@@ -82,7 +82,7 @@ class ReactJWPlayer extends Component {
 
     const component = this;
     const player = window.jwplayer(this.videoRef);
-    if (!player) {
+    if (!player || !('setup' in player)) {
       // this player ref may have been destroyed already
       return;
     }
@@ -90,10 +90,13 @@ class ReactJWPlayer extends Component {
     const playerOpts = getPlayerOpts(this.props);
 
     // eslint-disable-next-line no-console
-    console.log(player);
+    console.log('_initialize player instance: ', player);
+    console.log('_initialize videoRef instance: ', this.videoRef);
+
     initialize({ component, player, playerOpts });
   }
   _setVideoRef(element) {
+    console.log('_setVideoRef: ', element);
     this.videoRef = element;
   }
   render() {
